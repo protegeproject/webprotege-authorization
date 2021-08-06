@@ -7,7 +7,7 @@ import edu.stanford.protege.webprotege.cmd.Request;
  * Stanford Center for Biomedical Informatics Research
  * 2021-08-05
  */
-public record GetRolesRequest(Subject subject, Resource resource) implements Request<GetUserRolesResponse> {
+public record GetRolesRequest(Subject subject, Resource resource) implements Request<GetRolesResponse> {
 
     public static final String CHANNEL_NAME = "GetRoles";
 

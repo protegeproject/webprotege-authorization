@@ -1,5 +1,6 @@
 package edu.stanford.protege.webprotege.authorization.api;
 
+import com.fasterxml.jackson.annotation.*;
 import edu.stanford.protege.webprotege.model.UserId;
 
 import javax.annotation.Nonnull;
@@ -14,6 +15,11 @@ import java.util.Optional;
  * Represents the subject of a role assignment.  The subject can represent a specific signed in user,
  * the guest user, or any signed in user.
  */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
+@JsonSubTypes({
+        @JsonSubTypes.Type(Subject.SpecificUser.class),
+        @JsonSubTypes.Type(Subject.AnySignedInUser.class)
+})
 public abstract class Subject {
 
 
@@ -24,12 +30,14 @@ public abstract class Subject {
      * Determines whether this subject identifies the guest user.
      * @return {@code true} if this subject identifies the guest user, otherwise {@code false}.
      */
+    @JsonIgnore
     public abstract boolean isGuest();
 
     /**
      * Determines whether this subject identifies any signed in user (i.e. a user that is not the guest user)
      * @return {@code true} if this subject identifies any signed in user, otherwise {@code false}.
      */
+    @JsonIgnore
     public abstract boolean isAnySignedInUser();
 
     /**
@@ -38,6 +46,7 @@ public abstract class Subject {
      * user (i.e. a specific user or the guest user).
      */
     @Nonnull
+    @JsonIgnore
     public abstract Optional<String> getUserName();
 
     public abstract Optional<UserId> getUserId();
@@ -59,9 +68,14 @@ public abstract class Subject {
     }
 
 
-    private static class AnySignedInUser extends Subject {
+    @JsonTypeName("AnyUser")
+    protected static class AnySignedInUser extends Subject {
 
         private static final AnySignedInUser INSTANCE = new AnySignedInUser();
+
+        @JsonCreator
+        public AnySignedInUser() {
+        }
 
         @Override
         public boolean isGuest() {
@@ -100,12 +114,14 @@ public abstract class Subject {
         }
     }
 
-    private static class SpecificUser extends Subject {
+    @JsonTypeName("User")
+    protected static class SpecificUser extends Subject {
 
         private static final SpecificUser GUEST = new SpecificUser(UserId.getGuest());
 
         private final UserId userId;
 
+        @JsonCreator
         public SpecificUser(UserId userId) {
             this.userId = Objects.requireNonNull(userId);
         }
