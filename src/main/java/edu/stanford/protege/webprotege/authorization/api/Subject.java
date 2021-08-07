@@ -1,7 +1,7 @@
 package edu.stanford.protege.webprotege.authorization.api;
 
 import com.fasterxml.jackson.annotation.*;
-import edu.stanford.protege.webprotege.model.UserId;
+import edu.stanford.protege.webprotege.common.UserId;
 
 import javax.annotation.Nonnull;
 import java.util.Objects;

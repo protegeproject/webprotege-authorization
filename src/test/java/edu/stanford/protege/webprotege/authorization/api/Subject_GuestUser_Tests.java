@@ -1,6 +1,6 @@
 package edu.stanford.protege.webprotege.authorization.api;
 
-import edu.stanford.protege.webprotege.model.UserId;
+import edu.stanford.protege.webprotege.common.UserId;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

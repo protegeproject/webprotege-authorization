@@ -1,6 +1,6 @@
 package edu.stanford.protege.webprotege.authorization.api;
 
-import edu.stanford.protege.webprotege.cmd.Response;
+import edu.stanford.protege.webprotege.common.cmd.Response;
 
 import java.util.Set;
 

@@ -3,7 +3,7 @@ package edu.stanford.protege.webprotege.authorization.api;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import edu.stanford.protege.webprotege.model.ProjectId;
+import edu.stanford.protege.webprotege.common.ProjectId;
 
 import java.util.Optional;
 

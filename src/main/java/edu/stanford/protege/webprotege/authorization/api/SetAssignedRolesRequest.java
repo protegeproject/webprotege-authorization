@@ -1,8 +1,8 @@
 package edu.stanford.protege.webprotege.authorization.api;
 
-import edu.stanford.protege.webprotege.cmd.Request;
-import edu.stanford.protege.webprotege.cmd.Response;
-import edu.stanford.protege.webprotege.model.UserId;
+import edu.stanford.protege.webprotege.common.cmd.Request;
+import edu.stanford.protege.webprotege.common.cmd.Response;
+import edu.stanford.protege.webprotege.common.UserId;
 
 import java.util.Set;
 
