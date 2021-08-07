@@ -9,9 +9,9 @@ import static edu.stanford.protege.webprotege.authorization.api.AuthorizationCon
  * Stanford Center for Biomedical Informatics Research
  * 2021-08-05
  */
-public record GetResourcesRequest(Subject subject, ActionId actionId) implements Request<GetResourcesResponse> {
+public record GetAuthorizedResourcesRequest(Subject subject, ActionId actionId) implements Request<GetAuthorizedResourcesResponse> {
 
-    public static final String CHANNEL_NAME = CHANNEL_NAME_PREFIX + "GetResources";
+    public static final String CHANNEL_NAME = CHANNEL_NAME_PREFIX + "GetAuthorizedResources";
 
     @Override
     public String getChannel() {

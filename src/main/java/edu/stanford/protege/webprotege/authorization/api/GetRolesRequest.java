@@ -9,7 +9,7 @@ import edu.stanford.protege.webprotege.cmd.Request;
  */
 public record GetRolesRequest(Subject subject, Resource resource) implements Request<GetRolesResponse> {
 
-    public static final String CHANNEL_NAME = "GetRoles";
+    public static final String CHANNEL_NAME = AuthorizationConstants.CHANNEL_NAME_PREFIX + "GetRoles";
 
     @Override
     public String getChannel() {

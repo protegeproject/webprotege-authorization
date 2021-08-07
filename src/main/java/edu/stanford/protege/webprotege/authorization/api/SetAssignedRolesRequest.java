@@ -13,7 +13,7 @@ import static edu.stanford.protege.webprotege.authorization.api.AuthorizationCon
  * Stanford Center for Biomedical Informatics Research
  * 2021-08-05
  */
-public record SetAssignedRolesRequest(UserId userId, Resource resource, Set<RoleId> roles) implements Request<Response> {
+public record SetAssignedRolesRequest(Subject subject, Resource resource, Set<RoleId> roles) implements Request<Response> {
 
     public static final String CHANNEL_NAME = CHANNEL_NAME_PREFIX + "SetAssignedRoles";
 

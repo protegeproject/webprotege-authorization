@@ -4,6 +4,6 @@ import edu.stanford.protege.webprotege.cmd.Response;
 
 import java.util.Set;
 
-public record GetResourcesResponse(Subject subject, ActionId actionId, Set<Resource> resources) implements Response {
+public record GetAuthorizedResourcesResponse(Subject subject, ActionId actionId, Set<Resource> resources) implements Response {
 
 }
