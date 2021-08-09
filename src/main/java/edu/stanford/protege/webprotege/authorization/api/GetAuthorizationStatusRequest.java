@@ -1,6 +1,6 @@
 package edu.stanford.protege.webprotege.authorization.api;
 
-import edu.stanford.protege.webprotege.ipc.Request;
+import edu.stanford.protege.webprotege.common.Request;
 
 /**
  * Matthew Horridge
@@ -8,7 +8,8 @@ import edu.stanford.protege.webprotege.ipc.Request;
  * 2021-08-06
  */
 public record GetAuthorizationStatusRequest(Resource resource,
-                                            Subject subject) implements Request<GetAuthorizationStatusResponse> {
+                                            Subject subject,
+                                            ActionId actionId) implements Request<GetAuthorizationStatusResponse> {
 
     public static final String CHANNEL_NAME = AuthorizationConstants.CHANNEL_NAME_PREFIX + "GetAuthorizationStatus";
 

@@ -1,6 +1,6 @@
 package edu.stanford.protege.webprotege.authorization.api;
 
-import edu.stanford.protege.webprotege.ipc.Request;
+import edu.stanford.protege.webprotege.common.Request;
 
 /**
  * Matthew Horridge

@@ -1,5 +1,6 @@
 package edu.stanford.protege.webprotege.authorization.api;
 
+import edu.stanford.protege.webprotege.common.Request;
 import edu.stanford.protege.webprotege.ipc.*;
 
 import javax.annotation.Nonnull;

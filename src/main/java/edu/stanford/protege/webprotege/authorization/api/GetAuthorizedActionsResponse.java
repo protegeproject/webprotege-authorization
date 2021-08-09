@@ -1,7 +1,9 @@
 package edu.stanford.protege.webprotege.authorization.api;
 
-import edu.stanford.protege.webprotege.ipc.Response;
+import edu.stanford.protege.webprotege.common.Response;
 
-public record GetAuthorizedActionsResponse() implements Response {
+import java.util.Set;
+
+public record GetAuthorizedActionsResponse(Resource resource, Subject subject, Set<ActionId> actionIds) implements Response {
 
 }
