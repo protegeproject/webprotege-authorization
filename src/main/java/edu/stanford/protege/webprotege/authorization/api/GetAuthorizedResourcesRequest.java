@@ -1,6 +1,7 @@
 package edu.stanford.protege.webprotege.authorization.api;
 
-import edu.stanford.protege.webprotege.common.cmd.Request;
+
+import edu.stanford.protege.webprotege.ipc.Request;
 
 import static edu.stanford.protege.webprotege.authorization.api.AuthorizationConstants.CHANNEL_NAME_PREFIX;
 

@@ -1,8 +1,7 @@
 package edu.stanford.protege.webprotege.authorization.api;
 
-import edu.stanford.protege.webprotege.common.cmd.Request;
-import edu.stanford.protege.webprotege.common.cmd.Response;
-import edu.stanford.protege.webprotege.common.UserId;
+import edu.stanford.protege.webprotege.ipc.Request;
+import edu.stanford.protege.webprotege.ipc.Response;
 
 import java.util.Set;
 
@@ -13,7 +12,7 @@ import static edu.stanford.protege.webprotege.authorization.api.AuthorizationCon
  * Stanford Center for Biomedical Informatics Research
  * 2021-08-05
  */
-public record SetAssignedRolesRequest(Subject subject, Resource resource, Set<RoleId> roles) implements Request<Response> {
+public record SetAssignedRolesRequest(Subject subject, Resource resource, Set<RoleId> roles) implements Request<SetAssignedRolesResponse> {
 
     public static final String CHANNEL_NAME = CHANNEL_NAME_PREFIX + "SetAssignedRoles";
 
