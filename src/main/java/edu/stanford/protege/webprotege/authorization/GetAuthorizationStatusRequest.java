@@ -1,5 +1,6 @@
 package edu.stanford.protege.webprotege.authorization;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import edu.stanford.protege.webprotege.common.Request;
 
 /**
@@ -7,6 +8,7 @@ import edu.stanford.protege.webprotege.common.Request;
  * Stanford Center for Biomedical Informatics Research
  * 2021-08-06
  */
+@JsonTypeName("GetAuthorizationStatusRequest")
 public record GetAuthorizationStatusRequest(Resource resource,
                                             Subject subject,
                                             ActionId actionId) implements Request<GetAuthorizationStatusResponse> {

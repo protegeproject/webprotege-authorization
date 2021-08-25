@@ -1,5 +1,6 @@
 package edu.stanford.protege.webprotege.authorization;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import edu.stanford.protege.webprotege.common.Request;
 
 import javax.annotation.Nonnull;
@@ -14,6 +15,7 @@ import javax.annotation.Nonnull;
  * @param subject The subject
  * @param resource The resource
  */
+@JsonTypeName("GetAssignedRolesRequest")
 public record GetAssignedRolesRequest(@Nonnull Subject subject,
                                       @Nonnull Resource resource) implements Request<GetAssignedRolesResponse> {
 
