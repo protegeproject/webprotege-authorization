@@ -11,10 +11,10 @@ import java.util.Set;
  */
 public record SetAssignedRolesRequest(Subject subject, Resource resource, Set<RoleId> roles) implements Request<SetAssignedRolesResponse> {
 
-    public static final String CHANNEL_NAME = "webprotege.authorization.SetAssignedRoles";
+    public static final String CHANNEL = "webprotege.authorization.SetAssignedRoles";
 
     @Override
     public String getChannel() {
-        return CHANNEL_NAME;
+        return CHANNEL;
     }
 }

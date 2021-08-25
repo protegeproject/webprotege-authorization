@@ -11,10 +11,10 @@ public record GetAuthorizationStatusRequest(Resource resource,
                                             Subject subject,
                                             ActionId actionId) implements Request<GetAuthorizationStatusResponse> {
 
-    public static final String CHANNEL_NAME = "webprotege.authorization.GetAuthorizationStatus";
+    public static final String CHANNEL = "webprotege.authorization.GetAuthorizationStatus";
 
     @Override
     public String getChannel() {
-        return CHANNEL_NAME;
+        return CHANNEL;
     }
 }

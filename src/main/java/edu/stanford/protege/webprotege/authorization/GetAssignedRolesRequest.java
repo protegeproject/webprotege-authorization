@@ -17,10 +17,10 @@ import javax.annotation.Nonnull;
 public record GetAssignedRolesRequest(@Nonnull Subject subject,
                                       @Nonnull Resource resource) implements Request<GetAssignedRolesResponse> {
 
-    public static final String CHANNEL_NAME = "webprotege.authorization.GetAssignedRoles";
+    public static final String CHANNEL = "webprotege.authorization.GetAssignedRoles";
 
     @Override
     public String getChannel() {
-        return CHANNEL_NAME;
+        return CHANNEL;
     }
 }

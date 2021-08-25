@@ -10,10 +10,10 @@ import edu.stanford.protege.webprotege.common.Request;
  */
 public record GetAuthorizedResourcesRequest(Subject subject, ActionId actionId) implements Request<GetAuthorizedResourcesResponse> {
 
-    public static final String CHANNEL_NAME = "webprotege.authorization.GetAuthorizedResources";
+    public static final String CHANNEL = "webprotege.authorization.GetAuthorizedResources";
 
     @Override
     public String getChannel() {
-        return CHANNEL_NAME;
+        return CHANNEL;
     }
 }
