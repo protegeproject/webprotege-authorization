@@ -3,7 +3,6 @@ package edu.stanford.protege.webprotege.authorization;
 import edu.stanford.protege.webprotege.common.ProjectId;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * Matthew Horridge
