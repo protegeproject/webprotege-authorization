@@ -121,9 +121,14 @@ public abstract class Subject {
 
         private final UserId userId;
 
-        @JsonCreator
         public SpecificUser(UserId userId) {
             this.userId = Objects.requireNonNull(userId);
+        }
+
+        @JsonCreator
+        public static SpecificUser forUser(@JsonProperty("userId") String userId) {
+            Objects.requireNonNull(userId);
+            return new SpecificUser(UserId.valueOf(userId));
         }
 
         @Override

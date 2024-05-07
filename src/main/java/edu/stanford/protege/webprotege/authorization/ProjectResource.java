@@ -1,6 +1,7 @@
 package edu.stanford.protege.webprotege.authorization;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import edu.stanford.protege.webprotege.common.ProjectId;
 
@@ -17,13 +18,18 @@ public final class ProjectResource implements Resource {
 
     private final ProjectId projectId;
 
-    @JsonCreator
     public ProjectResource(ProjectId projectId) {
+        Objects.requireNonNull(projectId.id());
         this.projectId = Objects.requireNonNull(projectId);
     }
 
+
     public static ProjectResource forProject(ProjectId projectId) {
         return new ProjectResource(projectId);
+    }
+    @JsonCreator
+    public static ProjectResource forProject(@JsonProperty("projectId") String projectId) {
+        return new ProjectResource(ProjectId.valueOf(projectId));
     }
 
     @Override
