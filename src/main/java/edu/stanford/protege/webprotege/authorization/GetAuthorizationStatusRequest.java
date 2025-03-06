@@ -11,7 +11,7 @@ import edu.stanford.protege.webprotege.common.Request;
 @JsonTypeName("GetAuthorizationStatusRequest")
 public record GetAuthorizationStatusRequest(Resource resource,
                                             Subject subject,
-                                            ActionId actionId) implements Request<GetAuthorizationStatusResponse> {
+                                            Capability capability) implements Request<GetAuthorizationStatusResponse> {
 
     public static final String CHANNEL = "webprotege.authorization.GetAuthorizationStatus";
 

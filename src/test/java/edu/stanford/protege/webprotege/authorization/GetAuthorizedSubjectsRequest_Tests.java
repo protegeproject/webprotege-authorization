@@ -9,7 +9,6 @@ import org.springframework.boot.test.json.JacksonTester;
 import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @JsonTest
 class GetAuthorizedSubjectsRequest_Tests {
@@ -23,11 +22,11 @@ class GetAuthorizedSubjectsRequest_Tests {
     private Resource resource;
 
     @Autowired
-    private ActionId actionId;
+    private Capability capability;
 
     @BeforeEach
     void setUp() {
-        request = new GetAuthorizedSubjectsRequest(resource, actionId);
+        request = new GetAuthorizedSubjectsRequest(resource, capability);
     }
 
     @Test
@@ -39,7 +38,7 @@ class GetAuthorizedSubjectsRequest_Tests {
     void shouldSerializeRequest() throws IOException {
         var json = tester.write(request);
         assertThat(json).hasJsonPath("resource");
-        assertThat(json).hasJsonPath("actionId");
+        assertThat(json).hasJsonPath("capability");
     }
 
     @Test
@@ -50,7 +49,7 @@ class GetAuthorizedSubjectsRequest_Tests {
                             "@type" : "Project",
                             "projectId" : "00000000-0000-0000-0000-000000000000"
                         },
-                        "actionId" : "TheAction"
+                        "capability" : { "@type" : "BasicCapability", "id" : "TheCapability" }
                     }
                 """;
         var parsed = tester.parse(json).getObject();

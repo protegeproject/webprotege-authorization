@@ -21,22 +21,28 @@ public class ActionId_Serialization_Tests {
     public static final String ID = "CreateClasses";
 
     @Autowired
-    private JacksonTester<ActionId> tester;
+    private JacksonTester<Capability> tester;
 
     @Test
     void shouldSerializeToJson() throws IOException {
-        var actionId = new ActionId(ID);
+        var actionId = new BasicCapability(ID);
         var written = tester.write(actionId);
-        var json = written.getJson();
-        assertThat(json).isEqualTo("\"" + ID + "\"");
+        assertThat(written).extractingJsonPathStringValue("['@type']")
+                .isEqualTo("BasicCapability");
+        assertThat(written).extractingJsonPathStringValue("id", "CreateClasses");
     }
 
     @Test
     void shouldDeserializeFromJson() throws IOException {
-        var json = "\"" + ID + "\"";
+        var json = """
+                {
+                    "@type" : "BasicCapability",
+                    "id" : "CreateClasses"
+                }
+                """;
         var parsed = tester.parse(json);
-        var actionId = parsed.getObject();
-        assertThat(actionId.id()).isEqualTo(ID);
+        var capability = parsed.getObject();
+        assertThat(capability.id()).isEqualTo(ID);
     }
 
 }

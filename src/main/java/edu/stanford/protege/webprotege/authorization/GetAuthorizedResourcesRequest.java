@@ -10,7 +10,7 @@ import edu.stanford.protege.webprotege.common.Request;
  * 2021-08-05
  */
 @JsonTypeName("GetAuthorizedResourcesRequest")
-public record GetAuthorizedResourcesRequest(Subject subject, ActionId actionId) implements Request<GetAuthorizedResourcesResponse> {
+public record GetAuthorizedResourcesRequest(Subject subject, Capability capability) implements Request<GetAuthorizedResourcesResponse> {
 
     public static final String CHANNEL = "webprotege.authorization.GetAuthorizedResources";
 

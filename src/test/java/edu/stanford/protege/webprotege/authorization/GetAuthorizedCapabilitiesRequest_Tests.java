@@ -11,12 +11,12 @@ import java.io.IOException;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @JsonTest
-class GetAuthorizedActionsRequest_Tests {
+class GetAuthorizedCapabilitiesRequest_Tests {
 
-    private GetAuthorizedActionsRequest request;
+    private GetAuthorizedCapabilitiesRequest request;
 
     @Autowired
-    private JacksonTester<GetAuthorizedActionsRequest> tester;
+    private JacksonTester<GetAuthorizedCapabilitiesRequest> tester;
 
     @Autowired
     private Subject subject;
@@ -26,13 +26,13 @@ class GetAuthorizedActionsRequest_Tests {
 
     @BeforeEach
     void setUp() {
-        request = new GetAuthorizedActionsRequest(resource,
+        request = new GetAuthorizedCapabilitiesRequest(resource,
                                               subject);
     }
 
     @Test
     void shouldSupplyChannelName() {
-        assertThat(request.getChannel()).isEqualTo("webprotege.authorization.GetAuthorizedActions");
+        assertThat(request.getChannel()).isEqualTo("webprotege.authorization.GetAuthorizedCapabilities");
     }
 
     @Test

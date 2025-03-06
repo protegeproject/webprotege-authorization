@@ -26,7 +26,7 @@ class GetAuthorizationStatusRequest_Tests {
     private Resource resource;
 
     @Autowired
-    private ActionId actionId;
+    private Capability actionId;
 
     @BeforeEach
     void setUp() {
@@ -45,7 +45,7 @@ class GetAuthorizationStatusRequest_Tests {
         var json = tester.write(request);
         assertThat(json).hasJsonPath("subject");
         assertThat(json).hasJsonPath("resource");
-        assertThat(json).hasJsonPath("actionId");
+        assertThat(json).hasJsonPath("capability");
     }
 
     @Test
