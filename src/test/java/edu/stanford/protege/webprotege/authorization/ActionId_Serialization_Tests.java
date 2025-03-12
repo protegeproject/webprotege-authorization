@@ -3,7 +3,6 @@ package edu.stanford.protege.webprotege.authorization;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.json.JacksonTester;
 
 import java.io.IOException;
@@ -25,7 +24,7 @@ public class ActionId_Serialization_Tests {
 
     @Test
     void shouldSerializeToJson() throws IOException {
-        var actionId = new BasicCapability(ID);
+        var actionId = BasicCapability.valueOf(ID);
         var written = tester.write(actionId);
         assertThat(written).extractingJsonPathStringValue("['@type']")
                 .isEqualTo("BasicCapability");

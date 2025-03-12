@@ -22,13 +22,13 @@ public class BasicCapability_Tests {
 
     @BeforeEach
     public void setUp() {
-        capability = new BasicCapability(id);
+        capability = BasicCapability.valueOf(id);
     }
 
     @SuppressWarnings("ConstantConditions")
     public void shouldThrowNullPointerExceptionIf_id_IsNull() {
         assertThrows(NullPointerException.class, () -> {
-            new BasicCapability(null);
+            BasicCapability.valueOf(null);
         });
     }
 
@@ -50,16 +50,16 @@ public class BasicCapability_Tests {
 
     @Test
     public void shouldBeEqualToOther() {
-        assertThat(capability, Matchers.is(new BasicCapability(id)));
+        assertThat(capability, Matchers.is(BasicCapability.valueOf(id)));
     }
 
     @Test
     public void shouldNotBeEqualToOtherThatHasDifferent_id() {
-        assertThat(capability, is(Matchers.not(new BasicCapability("String-49f80fc5-f0c4-4013-accc-4f37f60d5632"))));
+        assertThat(capability, is(Matchers.not(BasicCapability.valueOf("String-49f80fc5-f0c4-4013-accc-4f37f60d5632"))));
     }
 
     @Test
     public void shouldBeEqualToOtherHashCode() {
-        assertThat(capability.hashCode(), is(new BasicCapability(id).hashCode()));
+        assertThat(capability.hashCode(), is(BasicCapability.valueOf(id).hashCode()));
     }
 }

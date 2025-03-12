@@ -46,7 +46,7 @@ public class TestConfiguration {
 
     @Bean
     Capability actionId() {
-        return new BasicCapability("TheCapability");
+        return BasicCapability.valueOf("TheCapability");
     }
 
     @Bean
