@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class GenericParameterizedCapabilityTest {
 
-    private JacksonTester<GenericParameterizedCapability> tester;
+    private JacksonTester<Capability> tester;
 
     @BeforeEach
     void setUp() {
@@ -35,5 +35,16 @@ class GenericParameterizedCapabilityTest {
         assertThat(written).extractingJsonPathStringValue("['@type']").isEqualTo("OtherTypeNotRecognized");
         assertThat(written).extractingJsonPathStringValue("['id']").isEqualTo("PerformActionX");
         assertThat(written).extractingJsonPathStringValue("['otherProperty']").isEqualTo("OtherValue");
+    }
+
+    @Test
+    void shouldSerialize() throws IOException {
+        var capability = new GenericParameterizedCapability("AnotherType", "PerformActionX", Map.of("otherProperty", "OtherValue"));
+        var written = tester.write(capability);
+        assertThat(written).extractingJsonPathStringValue("['@type']").isEqualTo("AnotherType");
+        var json = written.getJson();
+        var firstIndex = json.indexOf("@type");
+        var lastIndex = json.lastIndexOf("@type");
+        assertThat(firstIndex).isEqualTo(lastIndex);
     }
 }

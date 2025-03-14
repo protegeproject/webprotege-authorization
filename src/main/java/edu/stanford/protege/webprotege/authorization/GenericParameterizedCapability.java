@@ -30,13 +30,17 @@ import java.util.Objects;
  * </pre>
  * </p>
  *
- * @param type        The type of the capability, required. This corresponds to the {@code @type} field in JSON.
+ * @param type        The capability type, required. This corresponds to the {@code @type} field in JSON and
+ *                    determines the kind of capability being represented. Unlike concrete subtypes of {@link Capability},
+ *                    which may have dedicated Java representations, {@link GenericParameterizedCapability} provides a
+ *                    flexible alternative for cases where a direct mapping to a Java type is unavailable. This allows
+ *                    deserialization of capabilities with unknown or dynamically defined types.
  * @param id          The unique identifier for the capability, required.
- * @param otherFields A map containing all additional fields not explicitly modeled, allowing for extensibility.
+ * @param otherFields A map containing all additional fields not explicitly modeled, allowing for flexibility.
  */
-public record GenericParameterizedCapability(@JsonProperty("@type") String type,
+public record GenericParameterizedCapability(@JsonTypeId @JsonProperty("@type") String type,
                                              @JsonProperty("id") String id,
-                                             @JsonAnyGetter Map<String, Object> otherFields) {
+                                             @JsonAnyGetter Map<String, Object> otherFields) implements Capability {
 
     /**
      * Constructs a new {@code GenericParameterizedCapability}.
@@ -68,6 +72,11 @@ public record GenericParameterizedCapability(@JsonProperty("@type") String type,
     @JsonAnySetter
     private void set(String field, Object value) {
         this.otherFields.put(field, value);
+    }
+
+    @Override
+    public GenericParameterizedCapability asGenericCapability() {
+        return this;
     }
 }
 
