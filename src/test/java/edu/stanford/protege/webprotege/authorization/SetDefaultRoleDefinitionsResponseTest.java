@@ -26,6 +26,7 @@ class SetDefaultRoleDefinitionsResponseTest {
     void shouldSerialize() throws IOException {
         var roleDefinition = RoleDefinition.get(
                 RoleId.valueOf("TestRole"),
+                RoleType.PROJECT_ROLE,
                 Set.of(RoleId.valueOf("ParentRole")),
                 Set.of(BasicCapability.valueOf("EditOntology")),
                 "Test Description"
@@ -45,6 +46,7 @@ class SetDefaultRoleDefinitionsResponseTest {
                     "roleDefinitions": [
                         {
                             "roleId": "TestRole",
+                            "roleType": "ProjectRole",
                             "parentRoles": ["ParentRole"],
                             "roleCapabilities": [{"@type":"BasicCapability","id":"EditOntology"}],
                             "description": "Test Description"

@@ -26,6 +26,7 @@ class GetProjectRoleDefinitionsResponseTest {
         var roleDefinitions = List.of(
             new RoleDefinition(
                 RoleId.valueOf("test-role"),
+                RoleType.PROJECT_ROLE,
                 Set.of(RoleId.valueOf("parent-role")),
                 Set.of(BasicCapability.valueOf("ViewProject")),
                 "Test role description"
@@ -47,6 +48,7 @@ class GetProjectRoleDefinitionsResponseTest {
                 "roleDefinitions": [
                     {
                         "roleId": "test-role",
+                        "roleType": "ProjectRole",
                         "parentRoles": ["parent-role"],
                         "roleCapabilities": [
                             {

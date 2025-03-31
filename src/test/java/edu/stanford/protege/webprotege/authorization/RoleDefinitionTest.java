@@ -26,11 +26,12 @@ class RoleDefinitionTest {
         var parentRoles = Set.of(RoleId.valueOf("parent-role"));
         var capabilities = Set.<Capability>of(BasicCapability.valueOf("ViewProject"));
         var description = "Test role description";
-        var roleDefinition = new RoleDefinition(roleId, parentRoles, capabilities, description);
+        var roleDefinition = new RoleDefinition(roleId, RoleType.PROJECT_ROLE, parentRoles, capabilities, description);
 
         var jsonContent = tester.write(roleDefinition);
 
         assertThat(jsonContent).extractingJsonPathStringValue("$.roleId").isEqualTo("test-role");
+        assertThat(jsonContent).extractingJsonPathStringValue("$.roleType").isEqualTo("ProjectRole");
         assertThat(jsonContent).extractingJsonPathArrayValue("$.parentRoles").containsExactly("parent-role");
         assertThat(jsonContent).extractingJsonPathStringValue("$.roleCapabilities[0].id").isEqualTo("ViewProject");
         assertThat(jsonContent).extractingJsonPathStringValue("$.roleCapabilities[0].@type").isEqualTo("BasicCapability");
@@ -42,6 +43,7 @@ class RoleDefinitionTest {
         var jsonContent = """
             {
                 "roleId": "test-role",
+                "roleType": "ProjectRole",
                 "parentRoles": ["parent-role"],
                 "roleCapabilities": [
                     {
