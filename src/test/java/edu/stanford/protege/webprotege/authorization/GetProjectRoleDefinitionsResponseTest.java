@@ -1,6 +1,7 @@
 package edu.stanford.protege.webprotege.authorization;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.stanford.protege.webprotege.common.ProjectId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.json.JacksonTester;
@@ -32,11 +33,9 @@ class GetProjectRoleDefinitionsResponseTest {
                 "Test role description"
             )
         );
-        var response = GetProjectRoleDefinitionsResponse.get(roleDefinitions);
+        var response = GetProjectRoleDefinitionsResponse.get(ProjectId.generate(), roleDefinitions);
 
         var jsonContent = tester.write(response);
-
-        assertThat(jsonContent).extractingJsonPathStringValue("$.@type").isEqualTo("webprotege.authorization.GetProjectRoleDefinitions");
         assertThat(jsonContent).extractingJsonPathArrayValue("$.roleDefinitions").hasSize(1);
     }
 
@@ -44,7 +43,7 @@ class GetProjectRoleDefinitionsResponseTest {
     void shouldDeserialize() throws IOException {
         var jsonContent = """
             {
-                "@type": "webprotege.authorization.GetProjectRoleDefinitions",
+                "projectId" : "10bbf8a0-b360-4e37-897d-7ee8629e6b3f",
                 "roleDefinitions": [
                     {
                         "roleId": "test-role",

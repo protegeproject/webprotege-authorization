@@ -12,7 +12,6 @@ import java.util.Objects;
 
 import static com.fasterxml.jackson.annotation.JsonTypeInfo.*;
 
-@JsonTypeInfo(use = Id.NAME)
 @JsonTypeName(GetDefaultRoleDefinitionsRequest.CHANNEL)
 public record GetDefaultRoleDefinitionsResponse(@JsonProperty("roleDefinitions") List<RoleDefinition> roleDefinitions) implements Response {
 

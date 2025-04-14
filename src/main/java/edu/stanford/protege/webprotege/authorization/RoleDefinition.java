@@ -4,8 +4,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.annotation.Nonnull;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+import static java.util.function.Predicate.not;
 
 public record RoleDefinition(@Nonnull @JsonProperty("roleId") RoleId roleId,
                              @Nonnull @JsonProperty("roleType") RoleType roleType,
@@ -32,5 +35,17 @@ public record RoleDefinition(@Nonnull @JsonProperty("roleId") RoleId roleId,
                                      @JsonProperty("roleCapabilities") Set<Capability> roleCapabilities,
                                      @JsonProperty("description") String description) {
         return new RoleDefinition(roleId, roleType, parentRoles, roleCapabilities, description);
+    }
+
+
+    public RoleDefinition withoutCapabilities(Predicate<Capability> filter) {
+        var remainingCapabilities = roleCapabilities.stream().filter(not(filter)).collect(Collectors.toSet());
+        return new RoleDefinition(roleId, roleType, parentRoles, remainingCapabilities, description);
+    }
+
+    public RoleDefinition addCapabilities(Collection<? extends Capability> capabilities) {
+        var combinedCapabilities = new LinkedHashSet<>(this.roleCapabilities);
+        combinedCapabilities.addAll(capabilities);
+        return new RoleDefinition(roleId, roleType, parentRoles, combinedCapabilities, description);
     }
 }

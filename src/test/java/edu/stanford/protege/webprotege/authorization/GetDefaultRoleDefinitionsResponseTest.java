@@ -36,7 +36,6 @@ class GetDefaultRoleDefinitionsResponseTest {
 
         var jsonContent = tester.write(response);
 
-        assertThat(jsonContent).extractingJsonPathStringValue("$.@type").isEqualTo("webprotege.authorization.GetDefaultRoleDefinitionsRequest");
         assertThat(jsonContent).extractingJsonPathArrayValue("$.roleDefinitions").hasSize(1);
     }
 
@@ -44,7 +43,6 @@ class GetDefaultRoleDefinitionsResponseTest {
     void shouldDeserialize() throws IOException {
         var jsonContent = """
             {
-                "@type": "webprotege.authorization.GetDefaultRoleDefinitionsRequest",
                 "roleDefinitions": [
                     {
                         "roleId": "test-role",

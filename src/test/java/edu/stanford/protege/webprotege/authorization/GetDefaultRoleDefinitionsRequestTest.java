@@ -23,14 +23,12 @@ class GetDefaultRoleDefinitionsRequestTest {
     void shouldSerialize() throws IOException {
         var request = new GetDefaultRoleDefinitionsRequest();
         var jsonContent = tester.write(request);
-        assertThat(jsonContent).extractingJsonPathStringValue("$.['@type']").isEqualTo("webprotege.authorization.GetDefaultRoleDefinitionsRequest");
     }
 
     @Test
     void shouldDeserialize() throws IOException {
         var jsonContent = """
             {
-                "@type": "webprotege.authorization.GetDefaultRoleDefinitionsRequest"
             }
             """;
 

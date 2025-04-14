@@ -27,7 +27,6 @@ class GetProjectRoleDefinitionsRequestTest {
 
         var jsonContent = tester.write(request);
 
-        assertThat(jsonContent).extractingJsonPathStringValue("$.@type").isEqualTo("webprotege.authorization.GetProjectRoleDefinitions");
         assertThat(jsonContent).extractingJsonPathStringValue("$.projectId").isEqualTo("12345678-1234-5678-1234-567812345678");
     }
 
@@ -35,7 +34,6 @@ class GetProjectRoleDefinitionsRequestTest {
     void shouldDeserialize() throws IOException {
         var jsonContent = """
             {
-                "@type": "webprotege.authorization.GetProjectRoleDefinitions",
                 "projectId": "12345678-1234-5678-1234-567812345678"
             }
             """;

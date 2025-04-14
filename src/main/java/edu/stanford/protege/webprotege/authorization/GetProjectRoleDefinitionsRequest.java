@@ -9,7 +9,6 @@ import edu.stanford.protege.webprotege.common.Request;
 
 import java.util.Objects;
 
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 @JsonTypeName(GetProjectRoleDefinitionsRequest.CHANNEL)
 public record GetProjectRoleDefinitionsRequest(ProjectId projectId) implements Request<GetProjectRoleDefinitionsResponse> {
 

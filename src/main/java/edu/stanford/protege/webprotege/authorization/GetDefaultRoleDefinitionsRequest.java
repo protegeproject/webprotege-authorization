@@ -10,7 +10,6 @@ import javax.annotation.Nonnull;
 
 import static com.fasterxml.jackson.annotation.JsonTypeInfo.*;
 
-@JsonTypeInfo(use = Id.NAME)
 @JsonTypeName(GetDefaultRoleDefinitionsRequest.CHANNEL)
 public record GetDefaultRoleDefinitionsRequest() implements Request<GetDefaultRoleDefinitionsResponse> {
 
