@@ -23,11 +23,11 @@ class GetAuthorizedResourcesRequest_Tests {
     private Subject subject;
 
     @Autowired
-    private ActionId actionId;
+    private Capability capability;
 
     @BeforeEach
     void setUp() {
-        request = new GetAuthorizedResourcesRequest(subject, actionId);
+        request = new GetAuthorizedResourcesRequest(subject, capability);
     }
 
     @Test
@@ -39,7 +39,7 @@ class GetAuthorizedResourcesRequest_Tests {
     void shouldSerializeRequest() throws IOException {
         var json = tester.write(request);
         assertThat(json).hasJsonPath("subject");
-        assertThat(json).hasJsonPath("actionId");
+        assertThat(json).hasJsonPath("capability");
     }
 
     @Test
@@ -50,7 +50,10 @@ class GetAuthorizedResourcesRequest_Tests {
                             "@type" : "User",
                             "userId" : "John Smith"
                         },
-                        "actionId" : "TheAction"
+                        "capability" : {
+                            "@type" : "BasicCapability",
+                            "id" : "TheCapability"
+                        }
                     }
                 """;
         var parsed = tester.parse(json).getObject();

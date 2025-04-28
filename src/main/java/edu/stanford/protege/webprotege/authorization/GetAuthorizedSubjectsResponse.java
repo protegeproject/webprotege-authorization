@@ -4,9 +4,7 @@ import edu.stanford.protege.webprotege.common.Response;
 
 import java.util.Set;
 
-import static java.util.Objects.requireNonNull;
-
 public record GetAuthorizedSubjectsResponse(Resource resource,
-                                            ActionId actionId,
+                                            Capability capability,
                                             Set<Subject> subjects) implements Response {
 }

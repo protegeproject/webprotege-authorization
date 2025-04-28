@@ -22,7 +22,10 @@ public class TestConfiguration {
                         "@type" : "Project",
                         "projectId" : "00000000-0000-0000-0000-000000000000"
                     },
-                    "actionId" : "TheAction"
+                    "capability" : {
+                        "@type" : "BasicCapability",
+                        "id" : "TheCapability"
+                    }
                 }
                 """;
 
@@ -42,8 +45,8 @@ public class TestConfiguration {
     }
 
     @Bean
-    ActionId actionId() {
-        return new ActionId("TheAction");
+    Capability actionId() {
+        return BasicCapability.valueOf("TheCapability");
     }
 
     @Bean

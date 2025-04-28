@@ -14,58 +14,52 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  * Stanford Center for Biomedical Informatics Research
  * 2021-08-05
  */
-public class ActionId_Tests {
+public class BasicCapability_Tests {
 
-    private ActionId actionId;
+    private BasicCapability capability;
 
     private final String id = "The id";
 
     @BeforeEach
     public void setUp() {
-        actionId = new ActionId(id);
+        capability = BasicCapability.valueOf(id);
     }
 
     @SuppressWarnings("ConstantConditions")
     public void shouldThrowNullPointerExceptionIf_id_IsNull() {
         assertThrows(NullPointerException.class, () -> {
-            new ActionId(null);
+            BasicCapability.valueOf(null);
         });
     }
 
     @Test
     public void shouldReturnSupplied_id() {
-        assertThat(actionId.id(), is(this.id));
+        assertThat(capability.id(), is(this.id));
     }
 
     @Test
     public void shouldBeEqualToSelf() {
-        assertThat(actionId, Matchers.is(actionId));
+        assertThat(capability, Matchers.is(capability));
     }
 
     @Test
     @SuppressWarnings("ObjectEqualsNull")
     public void shouldNotBeEqualToNull() {
-        assertThat(actionId.equals(null), is(false));
+        assertThat(capability.equals(null), is(false));
     }
 
     @Test
     public void shouldBeEqualToOther() {
-        assertThat(actionId, Matchers.is(new ActionId(id)));
+        assertThat(capability, Matchers.is(BasicCapability.valueOf(id)));
     }
 
     @Test
     public void shouldNotBeEqualToOtherThatHasDifferent_id() {
-        assertThat(actionId, is(Matchers.not(new ActionId("String-49f80fc5-f0c4-4013-accc-4f37f60d5632"))));
+        assertThat(capability, is(Matchers.not(BasicCapability.valueOf("String-49f80fc5-f0c4-4013-accc-4f37f60d5632"))));
     }
 
     @Test
     public void shouldBeEqualToOtherHashCode() {
-        assertThat(actionId.hashCode(), is(new ActionId(id).hashCode()));
+        assertThat(capability.hashCode(), is(BasicCapability.valueOf(id).hashCode()));
     }
-
-    @Test
-    public void shouldImplementToString() {
-        assertThat(actionId.toString(), Matchers.startsWith("ActionId"));
-    }
-
 }
