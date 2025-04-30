@@ -25,8 +25,9 @@ class RoleDefinitionTest {
         var roleId = RoleId.valueOf("test-role");
         var parentRoles = Set.of(RoleId.valueOf("parent-role"));
         var capabilities = Set.<Capability>of(BasicCapability.valueOf("ViewProject"));
+        var label = "Test label";
         var description = "Test role description";
-        var roleDefinition = new RoleDefinition(roleId, RoleType.PROJECT_ROLE, parentRoles, capabilities, description);
+        var roleDefinition = new RoleDefinition(roleId, RoleType.PROJECT_ROLE, parentRoles, capabilities, label, description);
 
         var jsonContent = tester.write(roleDefinition);
 
@@ -35,6 +36,7 @@ class RoleDefinitionTest {
         assertThat(jsonContent).extractingJsonPathArrayValue("$.parentRoles").containsExactly("parent-role");
         assertThat(jsonContent).extractingJsonPathStringValue("$.roleCapabilities[0].id").isEqualTo("ViewProject");
         assertThat(jsonContent).extractingJsonPathStringValue("$.roleCapabilities[0].@type").isEqualTo("BasicCapability");
+        assertThat(jsonContent).extractingJsonPathStringValue("$.label").isEqualTo(label);
         assertThat(jsonContent).extractingJsonPathStringValue("$.description").isEqualTo(description);
     }
 
@@ -51,6 +53,7 @@ class RoleDefinitionTest {
                         "id": "ViewProject"
                     }
                 ],
+                "label": "Test label",
                 "description": "Test role description"
             }
             """;
@@ -60,6 +63,7 @@ class RoleDefinitionTest {
         assertThat(deserialized.roleId()).isEqualTo(RoleId.valueOf("test-role"));
         assertThat(deserialized.parentRoles()).containsExactly(RoleId.valueOf("parent-role"));
         assertThat(deserialized.roleCapabilities()).containsExactly(BasicCapability.valueOf("ViewProject"));
+        assertThat(deserialized.label()).isEqualTo("Test label");
         assertThat(deserialized.description()).isEqualTo("Test role description");
     }
 } 

@@ -31,6 +31,7 @@ class SetProjectRoleDefinitionsRequestTest {
                 RoleType.PROJECT_ROLE,
                 Set.of(RoleId.valueOf("parent-role")),
                 Set.of(BasicCapability.valueOf("ViewProject")),
+                    "Test label",
                 "Test role description"
             )
         );
