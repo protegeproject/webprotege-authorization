@@ -36,7 +36,6 @@ class SetProjectRoleDefinitionsResponseTest {
 
         var jsonContent = tester.write(response);
 
-        assertThat(jsonContent).extractingJsonPathStringValue("$.@type").isEqualTo("webprotege.authorization.SetProjectRoleDefinitions");
         assertThat(jsonContent).extractingJsonPathArrayValue("$.roleDefinitions").hasSize(1);
     }
 
@@ -44,7 +43,6 @@ class SetProjectRoleDefinitionsResponseTest {
     void shouldDeserialize() throws IOException {
         var jsonContent = """
             {
-                "@type": "webprotege.authorization.SetProjectRoleDefinitions",
                 "roleDefinitions": [
                     {
                         "roleId": "test-role",
