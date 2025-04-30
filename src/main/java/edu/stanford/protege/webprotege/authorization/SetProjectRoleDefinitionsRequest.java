@@ -13,7 +13,6 @@ import java.util.Objects;
 
 import static com.fasterxml.jackson.annotation.JsonTypeInfo.*;
 
-@JsonTypeInfo(use = Id.NAME)
 @JsonTypeName(SetProjectRoleDefinitionsRequest.CHANNEL)
 public record SetProjectRoleDefinitionsRequest(@JsonProperty("projectId") ProjectId projectId,
                                                @JsonProperty("roleDefinitions") List<RoleDefinition> roleDefinitions) implements Request<SetProjectRoleDefinitionsResponse> {
