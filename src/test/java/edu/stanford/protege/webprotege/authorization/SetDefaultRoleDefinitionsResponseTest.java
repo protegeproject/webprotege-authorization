@@ -29,6 +29,7 @@ class SetDefaultRoleDefinitionsResponseTest {
                 RoleType.PROJECT_ROLE,
                 Set.of(RoleId.valueOf("ParentRole")),
                 Set.of(BasicCapability.valueOf("EditOntology")),
+                "Test label",
                 "Test Description"
         );
         var response = SetDefaultRoleDefinitionsResponse.get(List.of(roleDefinition));

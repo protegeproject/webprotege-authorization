@@ -31,6 +31,7 @@ class SetProjectRoleDefinitionsRequestTest {
                 RoleType.PROJECT_ROLE,
                 Set.of(RoleId.valueOf("parent-role")),
                 Set.of(BasicCapability.valueOf("ViewProject")),
+                    "Test label",
                 "Test role description"
             )
         );
@@ -38,7 +39,6 @@ class SetProjectRoleDefinitionsRequestTest {
 
         var jsonContent = tester.write(request);
 
-        assertThat(jsonContent).extractingJsonPathStringValue("$.@type").isEqualTo("webprotege.authorization.SetProjectRoleDefinitions");
         assertThat(jsonContent).extractingJsonPathStringValue("$.projectId").isEqualTo("12345678-1234-5678-1234-567812345678");
         assertThat(jsonContent).extractingJsonPathArrayValue("$.roleDefinitions").hasSize(1);
     }
@@ -47,7 +47,6 @@ class SetProjectRoleDefinitionsRequestTest {
     void shouldDeserialize() throws IOException {
         var jsonContent = """
             {
-                "@type": "webprotege.authorization.SetProjectRoleDefinitions",
                 "projectId": "12345678-1234-5678-1234-567812345678",
                 "roleDefinitions": [
                     {
