@@ -43,6 +43,12 @@
         </dependency>
 
         <dependency>
+            <groupId>edu.stanford.protege</groupId>
+            <artifactId>webprotege-criteria</artifactId>
+            <version>0.9.5-WHO</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
