@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonSubTypes({
         @JsonSubTypes.Type(BasicCapability.class),
         @JsonSubTypes.Type(GenericParameterizedCapability.class),
+        @JsonSubTypes.Type(ContextAwareCapability.class),
 })
 public interface Capability {
 

@@ -11,10 +11,10 @@ public record ContextAwareCapability(
         @JsonProperty("contextCriteria") CompositeRootCriteria contextCriteria
 ) implements Capability {
 
-    public static final String CONTEXT_AWARE_CAPABILITY = "ContextAwareCapability";
+    public final static String TYPE = "ContextAwareCapability";
 
     @Override
     public GenericParameterizedCapability asGenericCapability() {
-        return new GenericParameterizedCapability(CONTEXT_AWARE_CAPABILITY, id(), new HashMap<>());
+        return new GenericParameterizedCapability(TYPE, id(), Map.of("contextCriteria", contextCriteria));
     }
 }
